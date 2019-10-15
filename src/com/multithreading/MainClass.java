@@ -11,5 +11,7 @@ public class MainClass {
         t2.start();
 
         System.out.println("Main Thread");
+
+        //System.out.println("Main Thread");
     }
 }
