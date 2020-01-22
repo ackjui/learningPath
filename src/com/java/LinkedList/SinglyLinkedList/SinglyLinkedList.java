@@ -66,10 +66,9 @@ public class SinglyLinkedList {
         size--;
     }
 
-    public Node removeDuplicates(SinglyLinkedList sll)
+    public Node removeDuplicates(Node n)
     {
         HashSet<Integer> hashSet = new HashSet<Integer>();
-        Node n = sll.head;
         Node prev = null;
 
         while(n != null)
@@ -91,11 +90,11 @@ public class SinglyLinkedList {
     public static void main(String[] args)
     {
             SinglyLinkedList linkedList = new SinglyLinkedList();
-            linkedList.add(1);
+            linkedList.add(4);
             linkedList.add(2);
             linkedList.add(2);
             linkedList.add(4);
-            linkedList.add(5);
+            linkedList.add(2);
 
             linkedList.print(linkedList.head);
 
@@ -103,7 +102,7 @@ public class SinglyLinkedList {
 
             //linkedList.removeDuplicates(linkedList);
             //linkedList.delete(3);
-            linkedList.print(linkedList.removeDuplicates(linkedList));
+            linkedList.print(linkedList.removeDuplicates(linkedList.head));
             System.out.println("Size : " + linkedList.size);
     }
 }
