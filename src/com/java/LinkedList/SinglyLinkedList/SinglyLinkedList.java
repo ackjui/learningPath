@@ -66,25 +66,62 @@ public class SinglyLinkedList {
         size--;
     }
 
-    public Node removeDuplicates(Node n)
+    public void removeDuplicates()
     {
-        HashSet<Integer> hashSet = new HashSet<Integer>();
-        Node prev = null;
+        Node p1 = null, p2 = null, dup = null;
+        p1 = head;
 
-        while(n != null)
+        /* Pick elements one by one */
+        while(p1 != null && p1.next != null)
         {
-            if(hashSet.contains(n.item))
+            p2 = p1;
+
+            /* Compare the picked element with rest 
+                of the elements */
+            while(p2.next != null)
             {
-                prev.next = n.next;
-                size--;
-            }else
-            {
-                hashSet.add(n.item);
-                prev = n;
+                /* If duplicate then delete it */
+                if(p1.item == p2.next.item)
+                {
+                    /* sequence of steps is important here */
+                    dup = p2.next;
+                    p2.next = p2.next.next;
+                    //System.gc();
+                    size--;
+                }
+                else    /* This is tricky */
+                {
+                    p2 = p2.next;
+                }
             }
-            n = n.next;
+            p1 = p1.next;
         }
-        return prev;
+
+        while(head != null)
+        {
+            System.out.println(head.item);
+            head = head.next;
+        }
+    }
+
+    public void kthToLast(int kth)
+    {
+        Node n = head;
+        int i = 1;
+
+        for(Node x = head; i <= size - kth; x = x.next)
+        {
+            if(x != null)
+            {
+                n = x;
+                i++;
+            }
+        }
+
+        if(head != null && kth < size)
+        {
+            System.out.println("Kth To Last is : " + n.item);
+        }
     } 
 
     public static void main(String[] args)
@@ -102,7 +139,8 @@ public class SinglyLinkedList {
 
             //linkedList.removeDuplicates(linkedList);
             //linkedList.delete(3);
-            linkedList.print(linkedList.removeDuplicates(linkedList.head));
+            linkedList.removeDuplicates();
+            //linkedList.kthToLast(7);
             System.out.println("Size : " + linkedList.size);
     }
 }
