@@ -122,16 +122,31 @@ public class SinglyLinkedList {
         {
             System.out.println("Kth To Last is : " + n.item);
         }
-    } 
+    }
+
+    pubic boolean removeNode(Node n)
+    {
+        if(n == null || n.next == null)
+        {
+            System.out.println("Please provide valid Node entry.");
+            return false;
+        }
+
+        Node next = n.next;
+        n.item = next.item;
+        n.next = next.next;
+
+        return true;
+    }
 
     public static void main(String[] args)
     {
             SinglyLinkedList linkedList = new SinglyLinkedList();
+            linkedList.add(1);
+            linkedList.add(2);
+            linkedList.add(3);
             linkedList.add(4);
-            linkedList.add(2);
-            linkedList.add(2);
-            linkedList.add(4);
-            linkedList.add(2);
+            linkedList.add(5);
 
             linkedList.print(linkedList.head);
 
@@ -139,8 +154,9 @@ public class SinglyLinkedList {
 
             //linkedList.removeDuplicates(linkedList);
             //linkedList.delete(3);
-            linkedList.removeDuplicates();
+            //linkedList.removeDuplicates();
             //linkedList.kthToLast(7);
+            //linkedList.removeNode();
             System.out.println("Size : " + linkedList.size);
     }
 }
