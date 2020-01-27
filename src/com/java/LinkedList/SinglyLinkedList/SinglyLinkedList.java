@@ -139,6 +139,32 @@ public class SinglyLinkedList {
         return true;
     }
 
+    //tested with passing head
+    public Node partition(Node node, int x)
+    { // 1 -> 5 -> 8 -> 7 -> 4 -> 3 -> 10
+        // 1 -> 3-> 4 -> 5 -> 7 -> 8 -> 10
+        Node head = node;
+        Node tail = node;
+
+        while(node != null)
+        {
+            Node next = node.next;
+            if(node.item >= x)
+            {
+                tail.next = node;
+                tail = node;
+            }else
+            {
+                node.next = head;
+                head = node;
+            }
+            node = next;
+        }
+        tail.next = null;
+
+        return head;
+    }
+
     public static void main(String[] args)
     {
             SinglyLinkedList linkedList = new SinglyLinkedList();
