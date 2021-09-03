@@ -22,5 +22,7 @@ public class BarbequeTopping extends ToppingsDecorator
     }
 
     @Override
-    public int getCost() {return pizza.getCost() + 90; }
+    public int getCost() {
+        return pizza.getCost() + 90; 
+    }
 }
